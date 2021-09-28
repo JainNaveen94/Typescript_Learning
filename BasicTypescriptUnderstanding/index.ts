@@ -1,5 +1,5 @@
 import TypeBasedLogic from "./Scripts/TypeBasedLogic";
-import {Prod, Product} from "./Scripts/ObjectTypeLogic";ß
+import {Products, Prod, Product} from "./Scripts/ObjectTypeLogic";ß
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -15,5 +15,6 @@ console.log("TS Code Execution : ", TypeBasedLogic.tsAddAndShowResult(3.9, 3.6, 
 TypeBasedLogic.printCustomeTSAddAndShowResult();
 
 /** Product Type Code Compilation */
+console.log("JS Code Execution : ", Products.details.title);
 // console.log("Prod Detail : ", Prod.details.title);
-console.log("Product Detail : ", Product.details.title)
+console.log("Product Detail : ", Product.details.title);
