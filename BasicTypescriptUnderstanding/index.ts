@@ -2,6 +2,7 @@ import TypeBasedLogic from "./Scripts/TypeBasedLogic";
 import {Products, Prod, Product} from "./Scripts/ObjectTypeLogic";
 import * as ArrayLib from "./Scripts/ArrayTypeLogic";
 import * as TupleLib from "./Scripts/TupleTypeLogic";
+import * as EnumLib from "./Scripts/EnumTypeLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -32,3 +33,11 @@ console.log("TS Code Execution Tuple : ", TupleLib.tempTup);
 TupleLib.pushInTempTuple();
 TupleLib.concatTempTupleElement(" Jain");
 console.log("TS Code Execution Access Tuple Using Idx :", TupleLib.accessTempTuple(1));
+
+/** Enum Type Code Compilation */
+console.log("TS Code Numeric Enums : ", EnumLib.PrintMediaNumericEnum);
+console.log("TS Code String Enums : ", EnumLib.PrintMediaStringEnum);
+console.log("TS Code Hetrogeneous Enums : ", EnumLib.PrintMediaHetrogeneousEnum);
+console.log("TS Code Basic Enums Example : ", EnumLib.getPrintMedia("Outlook"));
+console.log("TS Code Comuted Enums Example : ", EnumLib.PrintMediaComputedEnum);
+EnumLib.getReverseMappingEnumResult();
