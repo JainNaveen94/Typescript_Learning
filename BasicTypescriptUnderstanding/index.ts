@@ -4,6 +4,7 @@ import * as ArrayLib from "./Scripts/ArrayTypeLogic";
 import * as TupleLib from "./Scripts/TupleTypeLogic";
 import * as EnumLib from "./Scripts/EnumTypeLogic";
 import * as SpecialLib from "./Scripts/SpecialTypeLogic";
+import * as TypeAliasesLib from "./Scripts/TypeAliasesLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -49,3 +50,9 @@ console.log("TS Code Unkonwn Type : ", SpecialLib.getUnknownTypeDiffValue(Specia
 console.log("TS Code Union Type : ", SpecialLib.getUnionTempDiffValue(SpecialLib.CoreType.OTHER));
 console.log("TS Code String Literal Type : ", SpecialLib.performAddition(40, 80, "as-number"));
 console.log("TS Code Numeric Literal Type : ", SpecialLib.rollDice());
+
+/** Type Aliases Code Compilation */
+console.log("TS Code With Type Aliases Combination : ", TypeAliasesLib.performAdditionWithOutTypeAliases("201", "40", "as-text"));
+console.log("TS Code Without Type Aliases Combination : ", TypeAliasesLib.performAdditionWithTypeAliases(201, 40,"as-number"));
+console.log("TS Code With Type Aliases Combination : ", TypeAliasesLib.isOlderWithoutAliases({name: "Naveen", age: 27}, 30));
+console.log("TS Code Without Type Aliases Combination : ", TypeAliasesLib.isOlderWithAliases({name: "Vikas", age: 45}, 40));
