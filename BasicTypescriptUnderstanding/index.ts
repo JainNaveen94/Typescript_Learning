@@ -3,6 +3,7 @@ import {Products, Prod, Product} from "./Scripts/ObjectTypeLogic";
 import * as ArrayLib from "./Scripts/ArrayTypeLogic";
 import * as TupleLib from "./Scripts/TupleTypeLogic";
 import * as EnumLib from "./Scripts/EnumTypeLogic";
+import * as SpecialLib from "./Scripts/SpecialTypeLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -41,3 +42,10 @@ console.log("TS Code Hetrogeneous Enums : ", EnumLib.PrintMediaHetrogeneousEnum)
 console.log("TS Code Basic Enums Example : ", EnumLib.getPrintMedia("Outlook"));
 console.log("TS Code Comuted Enums Example : ", EnumLib.PrintMediaComputedEnum);
 EnumLib.getReverseMappingEnumResult();
+
+/** Some Special Type Code Compilation */
+console.log("TS Code Any Type : ", SpecialLib.getAnyTypeDiffValues(SpecialLib.CoreType.STRING));
+console.log("TS Code Unkonwn Type : ", SpecialLib.getUnknownTypeDiffValue(SpecialLib.CoreType.OTHER));
+console.log("TS Code Union Type : ", SpecialLib.getUnionTempDiffValue(SpecialLib.CoreType.OTHER));
+console.log("TS Code String Literal Type : ", SpecialLib.performAddition(40, 80, "as-number"));
+console.log("TS Code Numeric Literal Type : ", SpecialLib.rollDice());
