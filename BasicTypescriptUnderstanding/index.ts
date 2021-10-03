@@ -5,6 +5,8 @@ import * as TupleLib from "./Scripts/TupleTypeLogic";
 import * as EnumLib from "./Scripts/EnumTypeLogic";
 import * as SpecialLib from "./Scripts/SpecialTypeLogic";
 import * as TypeAliasesLib from "./Scripts/TypeAliasesLogic";
+import * as FunctionTypeLib from "./Scripts/FunctionTypesLogic";
+import * as NeverTypeLib from "./Scripts/NeverTypeLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -56,3 +58,18 @@ console.log("TS Code With Type Aliases Combination : ", TypeAliasesLib.performAd
 console.log("TS Code Without Type Aliases Combination : ", TypeAliasesLib.performAdditionWithTypeAliases(201, 40,"as-number"));
 console.log("TS Code With Type Aliases Combination : ", TypeAliasesLib.isOlderWithoutAliases({name: "Naveen", age: 27}, 30));
 console.log("TS Code Without Type Aliases Combination : ", TypeAliasesLib.isOlderWithAliases({name: "Vikas", age: 45}, 40));
+
+/** Function Type Code Compilation */
+FunctionTypeLib.normalJSReturnFunction(10,20);
+FunctionTypeLib.normalJSVoidFunction(100,200);
+FunctionTypeLib.typescriptReturnFunction(1000,2000);
+FunctionTypeLib.typescriptVoidFunction(10000,20000);
+console.log("JS Code With Normal Function Assignment : ", FunctionTypeLib.performAdditionJSCode(100, 200));
+console.log("TS Code With Function type variable Assignment : ", FunctionTypeLib.performAdditionTSCode(100, 200));
+console.log("TS Code With Specified way of Function Type : ", FunctionTypeLib.perfromMultiplicationTSCode(10,20));
+
+/** Never Type Code Compilation */
+NeverTypeLib.generateError("Internal Server Error !!", 500);
+NeverTypeLib.keepProcessing(); // Comment due to infinite loop
+console.log("TS Code Void return Type Check : ", NeverTypeLib.speech);
+
