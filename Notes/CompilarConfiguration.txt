@@ -1,0 +1,142 @@
+/** Special Notes Related to Typescipt Compilar **/
+
+1. Watch Mode : 
+<----------------->
+    - It is Special Mode which allowed the TS Compilar to recompile the TS File Automatically whenever there is change happend in file with ".ts" extension.
+    - To Enter into the Watch Mode Just need to run the Command `tsc <filename>.ts -watch` or `tsc <filename>.ts -w`
+    - To Exit from the Watch Mode Just Press `Ctrl + C`.
+
+    How to run All Project in Watch Mode :
+  >-----------------------------------------<
+  1. Need to Create the tsconfig.json file (Describe Below process of it).
+  2. run the command `tsc -watch` or `tsc -w`
+
+2. tsconfig.json File :
+<------------------------->
+    - This is one of the Important File for any project.
+    - It is important because it contain all the setting related to typescript Compiler.
+    - Through this file we can configure the Typescipt comilation as per our own requirement.
+    - To Create this File : 
+        - We can create it manually in Project folder where 'package.json' file is located.
+        - we can run the following command to initialize this file in project with default setting. `tsc --init`
+
+3. Important Section of tsconfig.json File :
+<---------------------------------------------------->
+    - There are Four Important Section of tsconfig.json file.
+
+    A. compilerOptions :
+  >----------------------<  
+      - This Section contains all the required configuration related to typescript Compilar.
+      - this section specify how the typescipt code can be compiled.
+      - for example : "compilerOptions": {"allowJs" : true}.
+
+    B. exclude :
+  >----------------------<
+      - This Section contain details of all the files and folder which you want not to be part of typescript compilation process.
+      - we can also use wild card symbols to define all the related files or folder related information.
+      - for example : "exclude" : { "node_modules", "app.ts", "*p.ts", "**pt/*p.dev.ts"}
+
+    C. include :
+  >----------------------<
+      - This Section contain details of all the files and folder which you want to be part of typescript compilation process.
+      - But After Defining this section all the files or folder which is not defined are not a part of TS Comilation.
+      - we can also use wild card symbols to define all the related files or folder related information.
+      - for example : "include" : { "**/**.ts", "**.ts" }
+
+    D. files :
+  >----------------------<
+      - It is very much similar as that of include section but the only difference is it contains only files not folder information.
+      - we can use either files option or include option at once.
+      - for example : "files" : {"app.ts"}
+
+
+4. Important Compilation Options of tsconfig.json File :
+<---------------------------------------------------->
+    - There are many Important Compilation Options exists in tsconfig.json file, some of them are explained below :
+    - Please note to get the details of all the available option, please run `tsc --init` command in cmd of project.
+
+    A. target :
+  >----------------------<
+      - target option specify that in which javascript you want to compile the typescript file.
+      - by default, typescript compile the code into 'es3' javascript version if we don't specify the option.
+      - for example : "compilerOptions" : {"target" : "es6"}.
+      - please note : we can specify any target conversion option as per our requirement.
+
+    B. lib :
+  >----------------------<
+      - lib option basically used to specify the Arrays of libraries which is used by typescript compiler to compile the code.
+      - by default, if we don't specify the option then it will assumes some core library bydefault as per the target option you set.
+      - but please note if you enable this option then all bydefault assumption goes into vain and we need to explicitly specify libraries as per our requirements.
+      - for example: "compilerOptions": {"lib": ["dom","es6","dom.iterable","scripthost"]}
+      - all above mentioned option specify the core javascript libraries that typescript can understand now while compilation the code.
+
+    C. allowJs & checkJs :
+  >--------------------------<
+      - Both the Typescipt Compilation Option is used to support the TS Compilation in javascript files.
+      - allowJs --> it allow the TS Compiler to compile the JS File against TS Rule, just to compile some of the feature of TS in JS code.
+      - checkJs --> it allow the TS Compiler to check the JS File Against TS Rule, just to check some of the feature of TS in JS Code.
+      - Please Note : Above two option specifically used in those project where you won't code in TS But use some of its feature in JS Code.
+      - For Example : "compilerOptions" : {"allowJs": false, "checkJs": false}
+
+    D. sourceMap :
+  >--------------------<
+      - sourceMap Option basically used to enable the debugging in Typescipt File.
+      - when we run the project on browser without making 'sourceMap: true', then under source section of tool in browser, only "*.js" files are there for debugging.
+      - so by making 'sourceMap: true', It will generate the ".map" {sorce map files} for each typescript file just to make bridge b/w Javascript file and typescript file.
+      - these ".map" files help the browser to understand TS Files and make it also available there.
+      - For Example : "compilerOptions" : {"sourceMap" : true}
+
+    E. outDir & rootDir :
+  >--------------------------<
+      - Both the Typescipt Compilation options are used for Scanning and Storing the File during TS Compilation.
+      - outDir :
+          -> This option is used to organised the JS files which are generated during TS Compilation.
+          -> By Default, if don't specify the outDir Option, then JS Code Files are generated for corresponding TS Code File in same Directory Structure.
+          -> But suppose if we want to organised all the JS Code files in some Directory, then we can go with this option by mentioning the Directort Address.
+          -> For example : "compilerOptions" : {"outDir" : "./dist"}
+      - rootDir :
+          -> This Option is used to specify the exact location of Directory under which Typescipt compiler want to scan for TS Files.
+          -> By Default it scan the entire project.
+          -> but if we want it to be specific to particular folder then we can go with the "rootDir" option.
+          -> Please note : all the sub folder and all the files are scanner during compilation process.
+          -> For example : "compilerOptions" : {"rootDir" : "./src"}
+
+    F. noEmit & noEmitOnError :
+  >--------------------------------<
+      - Both the Typescipt compilerOptions are used to stop the emitting or generating of JS Code File corresponding to Its respective TS Code File.
+      - noEmit : this option makes the complete emitting or stop generating the JS Files for each corresponding TS Code File.
+      - noEmitOnError : this option is similarly work as that of "noEmit" option but work only in case if error is exist in any TS Code file.
+      - For Example : "compilerOptions" : {"noEmit": false, "noEmitOnError": true}
+
+    G. Strict Type-Checking Options :
+  >-------------------------------------<
+      - There are few important compilerOptions which are only related to strict type-checking during compilation, some of them are explained below :
+      - For More Option refer the Official Docs.
+
+      Important Strict Type-Checking Options :
+    <--------------------------------------------->
+      1. strict : 
+          - This option is use to make all the Strict type-checking options true.
+          - please note we can use this option along with other strict type-checking options as false.
+          - for example : "compilerOptions" : {"strict": true}
+      2. noImplicitAny :
+          - Enable error reporting for expressions and declarations with an implied `any` type.
+          - for example : "compilerOptions" : {"noImplicitAny": false}
+
+    H. Code Quality Options :
+  >-------------------------------------<
+      - There are few important compilerOptions which are only related to Code Quality during compilation, some of them are explained below :
+      - For More Option refer the Official Docs.
+
+      Important Code Quality Options :
+    <--------------------------------------------->
+      1. noUnusedLocals : Enable error reporting when a local variables aren't read
+      2. noUnusedParameters : Raise an error when a function parameter isn't read
+      3. noImplicitReturns : Enable error reporting for codepaths that do not explicitly return in a function.
+      4. noFallthroughCasesInSwitch : Enable error reporting for fallthrough cases in switch statements.
+
+
+  Please Note : (Useful Resources for more details)
+*****************************************************
+1. Docs: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+2. Docs: https://www.typescriptlang.org/docs/handbook/compiler-options.html
