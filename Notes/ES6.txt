@@ -1,0 +1,120 @@
+/** Special Notes Related to ES6 **/
+
+There are Very Important Feature which Comes with ES6 Modules in which some of them are listed below :
+<-------------------------------------------------------------------------------------------------------->
+
+    1. let & const :
+  >--------------------<
+        - let and const are basically introduced in ES6 to define the variable name.
+        - it is define in the same way the variable are define using "var", but they are define with their own keyword.
+
+         let ::
+       >>-------<<
+            - It is used to define the variable using "let" keyword.
+            - Variable define using let will understand three types of scope which are :
+                1. Global Scope.    2. Functional Scope     3. Block Scope
+            - Value can be changed into the variable which are define using "let" keyword.
+            - For Example : let temp = "Naveen";
+                                temp = "Shubham";   // Works completely fine
+
+
+         const ::
+       >>-------<<
+            - It is used to define the variable using "const" keyword.
+            - Variable define using let will understand three types of scope which are :
+                1. Global Scope.    2. Functional Scope     3. Block Scope
+            - Value can't be changed once assigned into the variable which are define using "const" keyword.
+            - For Example : const temp = "Naveen";
+                                  temp = "Shubham";   // Throw Compiler Error
+
+
+        :   let vs const vs var   :
+    <<<----------------------------->>>
+        - let and const will understand block scope but var doesn't understand block scope.
+        - let and var variable values are changable but variable define using const are not changable once assigned.
+
+
+    2. Arrow Function :
+  >-------------------------<
+        - Arrow function are same as that of normal function but with some better features such as :
+            - Code Readability is increased.
+            - less line of code
+            - inline code function if function have only single expression.
+            - Autobinding with this keyword but in normal function we need to bind this keyword to access current object.
+            - They are easily used as a call back function as we can define it at the time of calling as a function parameter.
+        - For Example :
+            - let addition = (n1: number, n2: number) => { return n1 + n2; };    // Normal Arrow Function
+            - let add = (n1: number, n2: number) => n1+n2;                       // Inline Code Arrow Function
+            - let result = [1, 2, 3, 4, 5].forEach(item => console.log(item));   // arrow functiDefauon use as a callback function
+
+
+    3. Default Functional Parameter :
+  >-------------------------------------<
+        - Default Functional Parameters are the way to assign the default value to functional parameters using "=" operator.
+        - we can only assign the value to those functional parameters which are defined as the last parameters of functions.
+        - if we try to assign the default value to any parameter after which other non assign parameter exist then it will not work properly as per expectation.
+        - For Example :
+            - let addition = (n1: number, n2: number = 20) => { return n1 + n2; };
+              addition(200);        // because of default parameter n2 will become optional we don't pass it then it take default value.
+            - let add = (n1: number = 20, n2: number) => { return n1 + n2; };
+              add(200);             // return NAN as result which is not expected one.
+
+    4. Spread & Rest Operator :
+  >--------------------------------<
+        - Spread & Rest Operator is one of the Important enhancement which comes in ES6.
+        - They both can be using with Array and Object and defined using symbol "...".
+
+            Spread Operator :
+        >>---------------------<<
+                - The Spread Operator (...) with Array can be used in many cases,
+                  like when we want to expand, copy, concat also use with math objects.
+                - The Spread Operator (...) with objects is used to create copies of existing objects 
+                  with new or updated values or to make a copy of an object with more properties.
+                - For Example : (Please Refer the Code in ES6Basics Folder)
+
+            Rest Operator :
+        >>---------------------<<
+                - Rest Operator is an improved way to handle function parameter.
+                - It allowing us to more easily handle various input as parameters in a function. 
+                - With the help of a rest operator a function can be called with any number of arguments, no matter how it was defined.
+                - For Example :
+                 - // Code Without Rest Operator
+                    function fun(n1, n2) {
+                          return n1 + n2;
+                    }
+                    console.log(fun(1,2)); //3
+                    console.log(fun(1,2,3)); //3
+                    console.log(fun(1,2,3,4,5)); //3
+
+                 - // Code With Rest Operator
+                    function fun(...input) {
+                        let sum = 0;
+                        for(let i of input) {
+                            sum+=i;
+                        }
+                        return sum;
+                    }
+                    console.log(fun(1,2)); //3
+                    console.log(fun(1,2,3)); //6
+                    console.log(fun(1,2,3,4,5)); //15  
+
+    5. Array & Object Destructing :
+  >----------------------------------<
+        - Destructuring assignment is a special syntax that allows us to “unpack” arrays or objects into a bunch of variables.
+        - It unpack values from arrays, or properties from objects, into distinct variables.
+        - The Only Difference between Array Distructing & Object Distructing is that 
+            - in Array Distructing we can choose arbitary variable names 
+            - but in Object Distructing you need to specify exact property which you want to Destructured.
+              And we also have an option to assign it with new arbitary name through colon assingment option.
+        - For Example :
+            - // Array Destructing Example
+                    let tempArray = [10, 20, 30, 40, 50];
+                    let [a, b] = tempArray;                 // here, a = 10 & b = 20
+                    let [c, d, ...rest] = tempArray;        // here, c = 10 & d = 20 & rest = [30, 40, 50]
+            
+            - // Object Destructing Example
+                    let user = {name: "naveen", age: 27, bloodGroup: "O+"};
+                    let {name, bloodGroup: bGroup} = user;                 // here, name = "naveen" & bGroup = "O+"
+
+
+    
