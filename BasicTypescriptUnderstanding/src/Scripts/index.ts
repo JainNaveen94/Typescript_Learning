@@ -1,12 +1,12 @@
-import TypeBasedLogic from "./Scripts/TypeBasedLogic";
-import {Products, Prod, Product} from "./Scripts/ObjectTypeLogic";
-import * as ArrayLib from "./Scripts/ArrayTypeLogic";
-import * as TupleLib from "./Scripts/TupleTypeLogic";
-import * as EnumLib from "./Scripts/EnumTypeLogic";
-import * as SpecialLib from "./Scripts/SpecialTypeLogic";
-import * as TypeAliasesLib from "./Scripts/TypeAliasesLogic";
-import * as FunctionTypeLib from "./Scripts/FunctionTypesLogic";
-import * as NeverTypeLib from "./Scripts/NeverTypeLogic";
+import TypeBasedLogic from "./CoreTypeScript/TypeBasedLogic";
+import {Products, Prod, Product} from "./CoreTypeScript/ObjectTypeLogic";
+import * as ArrayLib from "./CoreTypeScript/ArrayTypeLogic";
+import * as TupleLib from "./CoreTypeScript/TupleTypeLogic";
+import * as EnumLib from "./CoreTypeScript/EnumTypeLogic";
+import * as SpecialLib from "./CoreTypeScript/SpecialTypeLogic";
+import * as TypeAliasesLib from "./CoreTypeScript/TypeAliasesLogic";
+import * as FunctionTypeLib from "./CoreTypeScript/FunctionTypesLogic";
+import * as NeverTypeLib from "./CoreTypeScript/NeverTypeLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
