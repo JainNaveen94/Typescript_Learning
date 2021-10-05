@@ -1,0 +1,337 @@
+/** Here we will Try to Learn the Oops Concept in Typescript */
+
+/** (@_@) ---- Oop Concepts (Object Oriented Programming Concepts) ---- (@_@) **/
+
+1. Classes :
+-----------------
+    - Classes are nothing but the blueprint of Object which is used to define n number of object of same type.
+    - TypeScript introduced classes to avail the benefit of object-oriented techniques like encapsulation and abstraction. 
+    - The class in TypeScript is compiled to plain JavaScript functions by the TypeScript compiler to work across platforms and browsers.
+    - A class can include the following: (To See Exact Example Please look into OopsTypescriptConcept Project)
+        - Properties : 
+      >-------------------<
+          - this are the Properties or we can say variable of a class.
+          - we also have the feature to assign the default values to the properties of a class.
+        - Methods : 
+      >-------------------<
+          - this are the function or we can say Prototypes of class which provide the services on behalf of class.
+          - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
+          - for example : getName() {
+                              return this.name;
+                          }
+        - Constructor : 
+      >--------------------<
+          - this are Special Method Used to Construct the Object of Classes.
+          - we have atmost single Constructor be defined in a particular class.
+          - construct can be defined using `constructor` keyword.
+          - for ex: constructor(id: string, name: string) {
+                      this.id = id;
+                      this.name = name;
+                    }
+          - constructor can also be used to perform shorthand code to define the class properties.
+            By Shorthand we simply means class without define properties explicitly.
+          - for ex : class Employee {
+                      constructor(id: string, name: string) {};
+                      }
+
+        - getter & setter : 
+      >--------------------<
+          - this are Special Method Used to get & set the Properties value of class.
+          - Getter can be defined by using `get` keyword while setter define usin `set` keyword.
+          - Please note They are use same as that we use normal properties without circular brackets "()".
+          - for ex: 
+                <******----Setter Example----****>
+                  set setId (id: string) {
+                      this.id = id;
+                  }
+                <******----Getter Example----****>
+                  get getId () {
+                      return this.id;
+                  }
+        - Method Overloading :
+      >------------------------<
+          - Function overloading is a mechanism or ability to create multiple methods with the same name in a same class.
+          - Function overloading is also known as method overloading.
+          - Import Rules to be Followed for Method or Function Overloading :
+              - The function name is the same
+              - The number of parameters is different in each overloaded function.
+              - The number of parameters is the same, and their type is different.
+              - The all overloads function must have the same return type.
+
+            For Example :
+          >>------------------<<
+          class A  
+          {  
+            // Method Overloading
+            public foo(s: string): number;  
+            public foo(n: number): string;  
+            public foo(arg: any): any   
+            {  
+                if (typeof(arg) === 'number')  
+                    return arg.toString();  
+                if (typeof(arg) === 'string')  
+                    return arg.length;  
+            }  
+          }  
+
+2. Access Modifiers :
+-------------------------
+    - Access Modifiers are one of the most import Concept introduced in the Typescript.
+    - Access Modifiers are used mostly to restrict the access of properties of the class to be modified directly.
+    - There are three types of access introduced by the Typescript, which are :
+        - public :
+      >----------------<
+            - it is the default access of every property defined without access modifier inside a class.
+            - it simply means that the property can be publically available and can be modified by any outside function.
+            - it is defined by using `public` keyword.
+        - private :
+      >----------------<
+            - it is one of the other important access modifier to restrict direct access to property.
+            - it simply means that the property can't be modified by any outside function.
+            - it is defined by using `private` keyword.
+        - protected :
+      >----------------<
+            - it is one of the other important access modifier to restrict direct access to property.
+            - it simply means that the property can't be modified by any outside function but can be modified by inherited classes.
+            - it is defined by using `protected` keyword.
+        - readonly :
+      >----------------<
+            - it is one of the another access modifier which is also used along with other access modifier.
+            - it simply means that once the property is intilize with any value then after it can't be modified but read.
+            - it is defined by using `readonly` keyword.
+            '
+    - for example : class demo {
+                        private readonly id: string;
+                        private name: string;
+                        public isDemoClass: boolean;
+                        protected employeeList: string[];
+                    }
+
+3. Static Methods & Properties :
+---------------------------------------
+    - Static Methods and Properties are one of the most important concept for any class.
+    - The Static members (properties and methods) of a class are accessed using the class name and dot notation, without creating an object 
+    - For Example : <ClassName>.<StaticMember>
+    - The static members can be defined by using the keyword `static`.
+    - for example : class Circle {
+                        static pi: number = 3.14;               // static property
+                        static calculateArea(radius:number) {   // static method
+                            return this.pi * radius * radius;
+                        }
+                    }
+                    Circle.pi;                                 // returns 3.14
+                    Circle.calculateArea(5);                   // returns 78.5
+    - Static and non-static fields with the same name can exists without any error.
+      The static field will be accessed using dot notation and the non-static field can be accessed using an object.
+      For Example : class Circle {
+                        static pi = 3.14;
+                        pi = 3;
+                    }
+                    // Try to access Static Member
+                    Circle.pi;                                // returns 3.14
+                    // Try to Access non-static member through object of class
+                    let circleObj = new Circle();
+                    circleObj.pi;                             // returns 3
+
+
+4. Inheritence :
+----------------------
+    - Inheritance is an aspect of OOPs languages, which provides the ability of a program to create a new class from an existing class.
+    - It is a mechanism which acquires the properties and behaviors of a class from another class.
+    - The class whose members are inherited is called the base class, and the class that inherits those members is called the derived/child/subclass.
+    - In child class, we can override or modify the behaviors of its parent class.
+    - TypeScript uses class inheritance through the `extends` keyword. 
+    - TypeScript supports only single inheritance and multilevel inheritance. 
+      It doesn't support multiple and hybrid inheritance.
+    - For Example :
+        // Base Class
+        class Car {
+          private color: string;
+          constructor(color: string) {
+            this.color = color;
+          }
+        }
+        // Sub Class
+        class Audi extands Car {
+          private price: number;
+          constructor(color: string, price: number) {
+            super(color);
+            this.price = price;
+          }
+        }
+    - Types of Inheritence and their Support in Typescript : (For Better understanding of first two please look into OopsTypescriptConcepts Examples)
+        - Single Inheritence : ( @--Supported--@ ) when single subclass is drived from single base class.
+        - Multi-level Inheritence : ( @--Supported--@) when we driverd one class from another and again driverd another subclass from that previously drived class and so on..
+        - Multiple Inheritance : ( @--Not Supported--@) when we derived one subclass from multiple parent class or base class.
+        - Hierarchical Inheritance : ( @--Supported--@) when we derived multiple subclass from single base class or parent class.
+        - Hybrid Inheritence : ( @--Not Supported--@) when we combine two or more type of inheritence structure.
+
+    Other Important Section of Inheritence :
+   >--------------------------------------------<
+
+      A. super Keyword :
+    >>-------------------<<
+        - super keyword is a kind of pointer which we used to point to the base class pointer.
+        - super keyword also used as a method to call the constructor of base class inside the 
+          constructor of parent class with required paramter list of parent class and child class.
+
+      B. Method overriding :
+    >>------------------------<<
+        - Method Overriding is one of the major concept of Oops Programming.
+        - This allow us to override the base class method into subclass by using same method name.
+        - this is used to achieve the Runtime Polymorphism.
+    
+      Combine Example : 
+    >>-------------------<<
+      class DepartmentType extends Department {
+        /** Class Properties */
+        private deptType: DepartmentCategory;
+
+        /** Class Constructor */
+        constructor(id: string, name: string, employeeList: Employee[], deptType: DepartmentCategory) {
+          super(id, name, employeeList);  // Here super is used as a method to call base class constructor
+          this.deptType = deptType;
+        }
+
+        /** Override Method of Base class */
+        printDepartmentInfo : () => void = () => {
+          console.log("Department Category Information : ", {id: super.getId, name: super.getName, type: this.getType, employees: super.getEmployeeList});
+        }
+      }
+
+
+5. Abstract Class :
+------------------------
+    - An abstract class is special class, typically includes one or more abstract methods or or property declarations.
+    - The class which extends the abstract class must define all the abstract methods or properties.
+    - We cannot create an instance or object of an abstract class.
+    - Abstract class or Abstract Methods or Abstract Property can be defined by using `abstract` keyword.
+    - Abstract Methods or Properties are those methods or properties which are only declare in abstract class 
+      and force to be defined in all sub class.
+
+    For Example :
+  >----------------<
+    // Base Abstract Class
+    abstract class Person {         // Abstract Class
+      abstract name: string;        // Abstract property
+      constructor(name: string) {
+          this.name = name;
+      }
+      abstract find(string): Person; // Abstract Method
+    }
+    // Inherited Sub Class
+    class Employee extends Person { 
+      name: string;
+      empCode: number;
+      
+      constructor(name: string, code: number) { 
+          super(); // must call super()
+          this.empCode = code;
+          this.name = name;
+      }
+
+      find(name:string): Person { 
+          return new Employee(name, 1);
+      }
+    }
+
+6. Interfaces :
+------------------
+    - Interfaces is one of the most important concept of Oops Programming.
+    - Interfaces is used to define the custome types same as that we can define using `type` keyword.
+    - please note Interfaces are different as compare to 'type' 
+      as we can easily use union in 'type' which is not possible in interfaces.
+    - An Interface is a structure which acts as a Public contract in our application. 
+    - It defines the syntax for classes to follow, means a class which implements an interface is bound to implement all its members. 
+    - We cannot instantiate the interface, but it can be referenced by the class object that implements it. 
+    - The TypeScript compiler uses interface for type-checking (also known as "duck typing" or "structural subtyping") whether the object has a specific structure or not.
+    - The interface contains only the declaration of the methods and fields, but not the implementation. 
+      We cannot use it to build anything. It is inherited by a class, 
+      and the class which implements interface defines all members of the interface.
+    - Please Note : When the Typescript compiler compiles it into JavaScript, 
+                    then the interface will be disappeared from the JavaScript file. 
+                    Thus, its purpose is to help in the development stage only.
+    - Interfaces can be define by using `interface` keyword, extended by other interfaces through `extends` keyword and
+      implemented by the class using `implements` keyword.
+    - Interface can extends multiple interface at once and same goes for classes as well class can implement multiple interfaces.
+    - Interface doesn't allowed the private and protected access modifier as it is a public contract but allow readonly access to property members.
+    
+      For Example : (For Better Understanding, please look into OopsTypescriptConcepts)
+    >------------------------------------------------------------------------------------------<
+
+    /** Example of Custom Type Defination using Interface **/
+      // Interface Custom Type Defination
+      interface OS {  
+        name: String;  
+        language: String;  
+      }  
+      // Interface Custom Type using
+      let Oreo: OS = {name: 'O', language: 'Java'} 
+      let OperatingSystem = (type: OS): void => {  
+        console.log('Android ' + type.name + ' has ' + type.language + ' language.');  
+      };   
+      OperatingSystem(Oreo);
+
+    /** Example of Interfaces With Class **/
+      // defining interface for class  
+      interface Person {  
+          firstName: string;  
+          lastName: string;  
+          age: number;  
+          FullName();  
+          GetAge();  
+      }  
+      // implementing the interface  
+      class Employee implements Person {  
+          firstName: string;  
+          lastName: string;  
+          age:number;  
+          FullName() {  
+              return this.firstName + ' ' + this.lastName;  
+          }  
+          GetAge() {  
+              return this.age;  
+          }  
+          constructor(firstN: string, lastN: string, getAge: number) {  
+              this.firstName = firstN;  
+              this.lastName = lastN;  
+              this.age = getAge;  
+          }  
+      }
+      // using the class that implements interface  
+      let myEmployee = new Employee('Abhishek', 'Mishra', 25);  
+      let fullName = myEmployee.FullName();  
+      let Age = myEmployee.GetAge();  
+      console.log("Name of Person: " +fullName + '\nAge: ' + Age);
+
+    
+7. Optional Parameters & Properties :
+------------------------------------------
+    - Typescript provide us one of the unique feature of Optional Parameters or Properties.
+    - By Optional Parameters we simply means that we can make any class or interface property as optional.
+    - Same goes with the Function, constructor or method paramters as well.
+
+      For Example :
+    >----------------------<
+    interface Employee {
+      name?: string;      // it make this properties optional so that now implemented class have right to decide
+                             weather it want that property or not
+    }
+
+    class NavEmployee implements Employee {
+      name?: string;
+
+      constructor(name?: string) {
+        if(name) {
+          this.name = name;
+        }
+      }
+    }
+
+    let navEmployee = new NavEmployee();
+
+
+
+
+
+
