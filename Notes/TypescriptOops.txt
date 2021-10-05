@@ -109,5 +109,71 @@
                     circleObj.pi;                             // returns 3
 
 
-4. Interface :
+4. Inheritence :
 ----------------------
+    - Inheritance is an aspect of OOPs languages, which provides the ability of a program to create a new class from an existing class.
+    - It is a mechanism which acquires the properties and behaviors of a class from another class.
+    - The class whose members are inherited is called the base class, and the class that inherits those members is called the derived/child/subclass.
+    - In child class, we can override or modify the behaviors of its parent class.
+    - TypeScript uses class inheritance through the `extends` keyword. 
+    - TypeScript supports only single inheritance and multilevel inheritance. 
+      It doesn't support multiple and hybrid inheritance.
+    - For Example :
+        // Base Class
+        class Car {
+          private color: string;
+          constructor(color: string) {
+            this.color = color;
+          }
+        }
+        // Sub Class
+        class Audi extands Car {
+          private price: number;
+          constructor(color: string, price: number) {
+            super(color);
+            this.price = price;
+          }
+        }
+    - Types of Inheritence and their Support in Typescript : (For Better understanding of first two please look into OopsTypescriptConcepts Examples)
+        - Single Inheritence : ( @--Supported--@ ) when single subclass is drived from single base class.
+        - Multi-level Inheritence : ( @--Supported--@) when we driverd one class from another and again driverd another subclass from that previously drived class and so on..
+        - Multiple Inheritance : ( @--Not Supported--@) when we derived one subclass from multiple parent class or base class.
+        - Hierarchical Inheritance : ( @--Supported--@) when we derived multiple subclass from single base class or parent class.
+        - Hybrid Inheritence : ( @--Not Supported--@) when we combine two or more type of inheritence structure.
+
+    Other Important Section of Inheritence :
+   >--------------------------------------------<
+
+      A. super Keyword :
+    >>-------------------<<
+        - super keyword is a kind of pointer which we used to point to the base class pointer.
+        - super keyword also used as a method to call the constructor of base class inside the 
+          constructor of parent class with required paramter list of parent class and child class.
+
+      B. Method overriding :
+    >>------------------------<<
+        - Method Overriding is one of the major concept of Oops Programming.
+        - This allow us to override the base class method into subclass by using same method name.
+        - this is used to achieve the Runtime Polymorphism.
+    
+      Combine Example : 
+    >>-------------------<<
+      class DepartmentType extends Department {
+        /** Class Properties */
+        private deptType: DepartmentCategory;
+
+        /** Class Constructor */
+        constructor(id: string, name: string, employeeList: Employee[], deptType: DepartmentCategory) {
+          super(id, name, employeeList);  // Here super is used as a method to call base class constructor
+          this.deptType = deptType;
+        }
+
+        /** Override Method of Base class */
+        printDepartmentInfo : () => void = () => {
+          console.log("Department Category Information : ", {id: super.getId, name: super.getName, type: this.getType, employees: super.getEmployeeList});
+        }
+      }
+
+
+
+

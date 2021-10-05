@@ -2,9 +2,9 @@ import { Employee }  from "./Employee";
 
 export class Department {
     /** Class Properties */
-    private readonly id : string;
-    private name : string;
-    private employeeList : Employee[];
+    protected readonly id : string;
+    protected name : string;
+    protected employeeList : Employee[];
 
     /** Class Constructor to Construct the Values */
     constructor (id: string, name: string, employeeList: Employee[]) {
