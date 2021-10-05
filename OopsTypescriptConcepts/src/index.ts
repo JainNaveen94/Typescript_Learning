@@ -2,6 +2,7 @@
 
 import { Employee } from "./Classes/Employee";
 import { Department } from "./Classes/Department";
+import { AccountService } from "./Classes/AccountService";
 
 /** Employee Class Object Creation */
 let employee1 = new Employee("EA-101", "Mahesh");
@@ -18,3 +19,7 @@ Employee4.printEmployee();
 engineerDepart.addEmployee(Employee4);
 accountDepart.printDepartmentInfo();
 engineerDepart.printDepartmentInfo();
+
+/** Account Service Class Static Property and Static Method Demo */
+console.log("Available Services Using Static Property : ", AccountService.availableServices);
+console.log("CTC Structure Calculation Using Static Method : ", AccountService.generateCTCStructure(2300000));

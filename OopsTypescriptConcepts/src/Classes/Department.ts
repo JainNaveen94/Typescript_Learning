@@ -12,27 +12,27 @@ export class Department {
         this.name = name;
         this.employeeList = employeeList;
     }
-
+ß
     /** Getter & Setter For Class Properties */
 
     // Id Property Getter
-    getId: () => string = () => {
+    get getId() {
         return this.id;
     }
 
     // Name Property Getter & Setter
-    setName : (name: string) => void = (name: string) => {
+    set setName (name: string) {
         this.name = name;
     }
-    getName : () => string = () => {
+    get getName() {
         return this.name;
     }
 
     // Employee List Property Getter & Setter
-    setEmployeeList: (employeeList: Employee[]) => void = (employeeList: Employee[]) => {
+    set setEmployeeList(employeeList: Employee[]) {
         this.employeeList = employeeList;
     }
-    getEmployeeList: () => Employee[] = () => {
+    get getEmployeeList() {
         return this.employeeList;
     }
 

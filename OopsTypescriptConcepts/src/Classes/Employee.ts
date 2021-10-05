@@ -11,15 +11,15 @@ export class Employee {
 
     /** Getter & Setter For Class Properties */
     // Id Property Getter
-    getId: () => string = () => {
+    get getId() {
         return this.id;
     }
 
     // Name Property Getter & Setter
-    setName : (name: string) => void = (name: string) => {
+    set setName (name: string) {
         this.name = name;
     }
-    getName : () => string = () => {
+    get getName () {
         return this.name;
     }
 

@@ -8,6 +8,17 @@
     - TypeScript introduced classes to avail the benefit of object-oriented techniques like encapsulation and abstraction. 
     - The class in TypeScript is compiled to plain JavaScript functions by the TypeScript compiler to work across platforms and browsers.
     - A class can include the following: (To See Exact Example Please look into OopsTypescriptConcept Project)
+        - Properties : 
+      >-------------------<
+            - this are the Properties or we can say variable of a class.
+            - we also have the feature to assign the default values to the properties of a class.
+        - Methods : 
+      >-------------------<
+            - this are the function or we can say Prototypes of class which provide the services on behalf of class.
+            - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
+            - for example : getName() {
+                                return this.name;
+                            }
         - Constructor : 
       >--------------------<
             - this are Special Method Used to Construct the Object of Classes.
@@ -22,17 +33,21 @@
             - for ex : class Employee {
                         constructor(id: string, name: string) {};
                        }
-        - Properties : 
-      >-------------------<
-            - this are the Properties or we can say variable of a class.
-            - we also have the feature to assign the default values to the properties of a class.
-        - Methods : 
-      >-------------------<
-            - this are the function or we can say Prototypes of class which provide the services on behalf of class.
-            - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
-            - for example : getName() {
-                                return this.name;
-                            }
+
+        - getter & setter : 
+      >--------------------<
+            - this are Special Method Used to get & set the Properties value of class.
+            - Getter can be defined by using `get` keyword while setter define usin `set` keyword.
+            - Please note They are use same as that we use normal properties without circular brackets "()".
+            - for ex: 
+                 <******----Setter Example----****>
+                    set setId (id: string) {
+                        this.id = id;
+                    }
+                 <******----Getter Example----****>
+                    get getId () {
+                        return this.id;
+                    }
 
 2. Access Modifiers :
 -------------------------
@@ -49,6 +64,11 @@
             - it is one of the other important access modifier to restrict direct access to property.
             - it simply means that the property can't be modified by any outside function.
             - it is defined by using `private` keyword.
+        - protected :
+      >----------------<
+            - it is one of the other important access modifier to restrict direct access to property.
+            - it simply means that the property can't be modified by any outside function but can be modified by inherited classes.
+            - it is defined by using `protected` keyword.
         - readonly :
       >----------------<
             - it is one of the another access modifier which is also used along with other access modifier.
@@ -56,7 +76,38 @@
             - it is defined by using `readonly` keyword.
             '
     - for example : class demo {
-                        private readonly id: string,
-                        private name: string,
-                        public isDemoClass: boolean,
+                        private readonly id: string;
+                        private name: string;
+                        public isDemoClass: boolean;
+                        protected employeeList: string[];
                     }
+
+3. Static Methods & Properties :
+---------------------------------------
+    - Static Methods and Properties are one of the most important concept for any class.
+    - The Static members (properties and methods) of a class are accessed using the class name and dot notation, without creating an object 
+    - For Example : <ClassName>.<StaticMember>
+    - The static members can be defined by using the keyword `static`.
+    - for example : class Circle {
+                        static pi: number = 3.14;               // static property
+                        static calculateArea(radius:number) {   // static method
+                            return this.pi * radius * radius;
+                        }
+                    }
+                    Circle.pi;                                 // returns 3.14
+                    Circle.calculateArea(5);                   // returns 78.5
+    - Static and non-static fields with the same name can exists without any error.
+      The static field will be accessed using dot notation and the non-static field can be accessed using an object.
+      For Example : class Circle {
+                        static pi = 3.14;
+                        pi = 3;
+                    }
+                    // Try to access Static Member
+                    Circle.pi;                                // returns 3.14
+                    // Try to Access non-static member through object of class
+                    let circleObj = new Circle();
+                    circleObj.pi;                             // returns 3
+
+
+4. Interface :
+----------------------
