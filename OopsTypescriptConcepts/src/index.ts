@@ -6,6 +6,8 @@ import { AccountService } from "./Classes/AccountService";
 import { DepartmentType } from "./Classes/DepartmentType";
 import { DepartmentCategory } from "./Classes/DepartmentCategoryEnum";
 import { Singleton } from "./Classes/Singleton";
+import { NavEmployee} from "./Classes/NavEmployee";
+import { User } from "./Interfaces/UserType";
 
 /** Employee Class Object Creation */
 let employee1 = new Employee("EA-101", "Mahesh");
@@ -43,3 +45,12 @@ if (s1 === s2) {
 } else {
     console.log('Singleton failed, variables contain different instances.');
 }
+
+/** Interfaces Demos */
+console.log("@___@) --- Interfacen as Custome Type Demo --- (@___@)");
+let user: User = {firstName: "Naveen", lastName: "Jain", age: 27, gender: "Male", id: "U-101"};
+console.log("Variable Declaration of Interface Custome Type : ", user);
+console.log("@___@) --- Interfacen With Class Demo --- (@___@)");
+let navEmployee = new NavEmployee("Naveen", "Jain", 27, "Male", "Emp-101");
+navEmployee.displayPersonalInfo();
+navEmployee.displayEmployeeInfo();

@@ -237,6 +237,99 @@
 
 6. Interfaces :
 ------------------
+    - Interfaces is one of the most important concept of Oops Programming.
+    - Interfaces is used to define the custome types same as that we can define using `type` keyword.
+    - please note Interfaces are different as compare to 'type' 
+      as we can easily use union in 'type' which is not possible in interfaces.
+    - An Interface is a structure which acts as a Public contract in our application. 
+    - It defines the syntax for classes to follow, means a class which implements an interface is bound to implement all its members. 
+    - We cannot instantiate the interface, but it can be referenced by the class object that implements it. 
+    - The TypeScript compiler uses interface for type-checking (also known as "duck typing" or "structural subtyping") whether the object has a specific structure or not.
+    - The interface contains only the declaration of the methods and fields, but not the implementation. 
+      We cannot use it to build anything. It is inherited by a class, 
+      and the class which implements interface defines all members of the interface.
+    - Please Note : When the Typescript compiler compiles it into JavaScript, 
+                    then the interface will be disappeared from the JavaScript file. 
+                    Thus, its purpose is to help in the development stage only.
+    - Interfaces can be define by using `interface` keyword, extended by other interfaces through `extends` keyword and
+      implemented by the class using `implements` keyword.
+    - Interface can extends multiple interface at once and same goes for classes as well class can implement multiple interfaces.
+    - Interface doesn't allowed the private and protected access modifier as it is a public contract but allow readonly access to property members.
+    
+      For Example : (For Better Understanding, please look into OopsTypescriptConcepts)
+    >------------------------------------------------------------------------------------------<
+
+    /** Example of Custom Type Defination using Interface **/
+      // Interface Custom Type Defination
+      interface OS {  
+        name: String;  
+        language: String;  
+      }  
+      // Interface Custom Type using
+      let Oreo: OS = {name: 'O', language: 'Java'} 
+      let OperatingSystem = (type: OS): void => {  
+        console.log('Android ' + type.name + ' has ' + type.language + ' language.');  
+      };   
+      OperatingSystem(Oreo);
+
+    /** Example of Interfaces With Class **/
+      // defining interface for class  
+      interface Person {  
+          firstName: string;  
+          lastName: string;  
+          age: number;  
+          FullName();  
+          GetAge();  
+      }  
+      // implementing the interface  
+      class Employee implements Person {  
+          firstName: string;  
+          lastName: string;  
+          age:number;  
+          FullName() {  
+              return this.firstName + ' ' + this.lastName;  
+          }  
+          GetAge() {  
+              return this.age;  
+          }  
+          constructor(firstN: string, lastN: string, getAge: number) {  
+              this.firstName = firstN;  
+              this.lastName = lastN;  
+              this.age = getAge;  
+          }  
+      }
+      // using the class that implements interface  
+      let myEmployee = new Employee('Abhishek', 'Mishra', 25);  
+      let fullName = myEmployee.FullName();  
+      let Age = myEmployee.GetAge();  
+      console.log("Name of Person: " +fullName + '\nAge: ' + Age);
+
+    
+7. Optional Parameters & Properties :
+------------------------------------------
+    - Typescript provide us one of the unique feature of Optional Parameters or Properties.
+    - By Optional Parameters we simply means that we can make any class or interface property as optional.
+    - Same goes with the Function, constructor or method paramters as well.
+
+      For Example :
+    >----------------------<
+    interface Employee {
+      name?: string;      // it make this properties optional so that now implemented class have right to decide
+                             weather it want that property or not
+    }
+
+    class NavEmployee implements Employee {
+      name?: string;
+
+      constructor(name?: string) {
+        if(name) {
+          this.name = name;
+        }
+      }
+    }
+
+    let navEmployee = new NavEmployee();
+
 
 
 
