@@ -1,0 +1,62 @@
+/** Here we will Try to Learn the Oops Concept in Typescript */
+
+/** (@_@) ---- Oop Concepts (Object Oriented Programming Concepts) ---- (@_@) **/
+
+1. Classes :
+-----------------
+    - Classes are nothing but the blueprint of Object which is used to define n number of object of same type.
+    - TypeScript introduced classes to avail the benefit of object-oriented techniques like encapsulation and abstraction. 
+    - The class in TypeScript is compiled to plain JavaScript functions by the TypeScript compiler to work across platforms and browsers.
+    - A class can include the following: (To See Exact Example Please look into OopsTypescriptConcept Project)
+        - Constructor : 
+      >--------------------<
+            - this are Special Method Used to Construct the Object of Classes.
+            - we have atmost single Constructor be defined in a particular class.
+            - construct can be defined using `constructor` keyword.
+            - for ex: constructor(id: string, name: string) {
+                        this.id = id;
+                        this.name = name;
+                      }
+            - constructor can also be used to perform shorthand code to define the class properties.
+              By Shorthand we simply means class without define properties explicitly.
+            - for ex : class Employee {
+                        constructor(id: string, name: string) {};
+                       }
+        - Properties : 
+      >-------------------<
+            - this are the Properties or we can say variable of a class.
+            - we also have the feature to assign the default values to the properties of a class.
+        - Methods : 
+      >-------------------<
+            - this are the function or we can say Prototypes of class which provide the services on behalf of class.
+            - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
+            - for example : getName() {
+                                return this.name;
+                            }
+
+2. Access Modifiers :
+-------------------------
+    - Access Modifiers are one of the most import Concept introduced in the Typescript.
+    - Access Modifiers are used mostly to restrict the access of properties of the class to be modified directly.
+    - There are three types of access introduced by the Typescript, which are :
+        - public :
+      >----------------<
+            - it is the default access of every property defined without access modifier inside a class.
+            - it simply means that the property can be publically available and can be modified by any outside function.
+            - it is defined by using `public` keyword.
+        - private :
+      >----------------<
+            - it is one of the other important access modifier to restrict direct access to property.
+            - it simply means that the property can't be modified by any outside function.
+            - it is defined by using `private` keyword.
+        - readonly :
+      >----------------<
+            - it is one of the another access modifier which is also used along with other access modifier.
+            - it simply means that once the property is intilize with any value then after it can't be modified but read.
+            - it is defined by using `readonly` keyword.
+            '
+    - for example : class demo {
+                        private readonly id: string,
+                        private name: string,
+                        public isDemoClass: boolean,
+                    }
