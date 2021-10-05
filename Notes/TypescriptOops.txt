@@ -10,44 +10,69 @@
     - A class can include the following: (To See Exact Example Please look into OopsTypescriptConcept Project)
         - Properties : 
       >-------------------<
-            - this are the Properties or we can say variable of a class.
-            - we also have the feature to assign the default values to the properties of a class.
+          - this are the Properties or we can say variable of a class.
+          - we also have the feature to assign the default values to the properties of a class.
         - Methods : 
       >-------------------<
-            - this are the function or we can say Prototypes of class which provide the services on behalf of class.
-            - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
-            - for example : getName() {
-                                return this.name;
-                            }
+          - this are the function or we can say Prototypes of class which provide the services on behalf of class.
+          - such as getter & Setter Methods which provide the service of getting or setting the properties values of class.
+          - for example : getName() {
+                              return this.name;
+                          }
         - Constructor : 
       >--------------------<
-            - this are Special Method Used to Construct the Object of Classes.
-            - we have atmost single Constructor be defined in a particular class.
-            - construct can be defined using `constructor` keyword.
-            - for ex: constructor(id: string, name: string) {
-                        this.id = id;
-                        this.name = name;
+          - this are Special Method Used to Construct the Object of Classes.
+          - we have atmost single Constructor be defined in a particular class.
+          - construct can be defined using `constructor` keyword.
+          - for ex: constructor(id: string, name: string) {
+                      this.id = id;
+                      this.name = name;
+                    }
+          - constructor can also be used to perform shorthand code to define the class properties.
+            By Shorthand we simply means class without define properties explicitly.
+          - for ex : class Employee {
+                      constructor(id: string, name: string) {};
                       }
-            - constructor can also be used to perform shorthand code to define the class properties.
-              By Shorthand we simply means class without define properties explicitly.
-            - for ex : class Employee {
-                        constructor(id: string, name: string) {};
-                       }
 
         - getter & setter : 
       >--------------------<
-            - this are Special Method Used to get & set the Properties value of class.
-            - Getter can be defined by using `get` keyword while setter define usin `set` keyword.
-            - Please note They are use same as that we use normal properties without circular brackets "()".
-            - for ex: 
-                 <******----Setter Example----****>
-                    set setId (id: string) {
-                        this.id = id;
-                    }
-                 <******----Getter Example----****>
-                    get getId () {
-                        return this.id;
-                    }
+          - this are Special Method Used to get & set the Properties value of class.
+          - Getter can be defined by using `get` keyword while setter define usin `set` keyword.
+          - Please note They are use same as that we use normal properties without circular brackets "()".
+          - for ex: 
+                <******----Setter Example----****>
+                  set setId (id: string) {
+                      this.id = id;
+                  }
+                <******----Getter Example----****>
+                  get getId () {
+                      return this.id;
+                  }
+        - Method Overloading :
+      >------------------------<
+          - Function overloading is a mechanism or ability to create multiple methods with the same name in a same class.
+          - Function overloading is also known as method overloading.
+          - Import Rules to be Followed for Method or Function Overloading :
+              - The function name is the same
+              - The number of parameters is different in each overloaded function.
+              - The number of parameters is the same, and their type is different.
+              - The all overloads function must have the same return type.
+
+            For Example :
+          >>------------------<<
+          class A  
+          {  
+            // Method Overloading
+            public foo(s: string): number;  
+            public foo(n: number): string;  
+            public foo(arg: any): any   
+            {  
+                if (typeof(arg) === 'number')  
+                    return arg.toString();  
+                if (typeof(arg) === 'string')  
+                    return arg.length;  
+            }  
+          }  
 
 2. Access Modifiers :
 -------------------------
