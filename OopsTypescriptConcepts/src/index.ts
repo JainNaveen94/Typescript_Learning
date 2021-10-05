@@ -5,6 +5,7 @@ import { Department } from "./Classes/Department";
 import { AccountService } from "./Classes/AccountService";
 import { DepartmentType } from "./Classes/DepartmentType";
 import { DepartmentCategory } from "./Classes/DepartmentCategoryEnum";
+import { Singleton } from "./Classes/Singleton";
 
 /** Employee Class Object Creation */
 let employee1 = new Employee("EA-101", "Mahesh");
@@ -32,3 +33,13 @@ departmentIT.printDepartmentInfo();
 console.log("@___@) --- Account Service Class Static Property and Static Method Demo --- (@___@)");
 console.log("Available Services Using Static Property : ", AccountService.availableServices);
 console.log("CTC Structure Calculation Using Static Method : ", AccountService.generateCTCStructure(2300000));
+
+/** Singleton Class Demo */
+console.log("@___@) --- Singleton Class Demo --- (@___@)");
+const s1 = Singleton.getInstance();
+const s2 = Singleton.getInstance();
+if (s1 === s2) {
+    console.log('Singleton works, both variables contain the same instance.');
+} else {
+    console.log('Singleton failed, variables contain different instances.');
+}
