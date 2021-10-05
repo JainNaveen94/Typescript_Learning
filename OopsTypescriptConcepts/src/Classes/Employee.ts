@@ -1,10 +1,13 @@
-export class Employee {
+import { Person } from "./Person";
+
+export class Employee extends Person {
     /** Class Properties */
     private readonly id: string;
-    private name: string;
+    protected name: string;
 
     /** Class Constructor to Construct the Values */
     constructor(id: string, name: string) {
+        super();
         this.id = id;
         this.name = name;
     }

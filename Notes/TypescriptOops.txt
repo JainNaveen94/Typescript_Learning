@@ -175,5 +175,45 @@
       }
 
 
+5. Abstract Class :
+------------------------
+    - An abstract class is special class, typically includes one or more abstract methods or or property declarations.
+    - The class which extends the abstract class must define all the abstract methods or properties.
+    - We cannot create an instance or object of an abstract class.
+    - Abstract class or Abstract Methods or Abstract Property can be defined by using `abstract` keyword.
+    - Abstract Methods or Properties are those methods or properties which are only declare in abstract class 
+      and force to be defined in all sub class.
+
+    For Example :
+  >----------------<
+    // Base Abstract Class
+    abstract class Person {         // Abstract Class
+      abstract name: string;        // Abstract property
+      constructor(name: string) {
+          this.name = name;
+      }
+      abstract find(string): Person; // Abstract Method
+    }
+    // Inherited Sub Class
+    class Employee extends Person { 
+      name: string;
+      empCode: number;
+      
+      constructor(name: string, code: number) { 
+          super(); // must call super()
+          this.empCode = code;
+          this.name = name;
+      }
+
+      find(name:string): Person { 
+          return new Employee(name, 1);
+      }
+    }
+
+6. Interfaces :
+------------------
+
+
+
 
 
