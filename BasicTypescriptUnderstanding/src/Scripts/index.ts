@@ -8,6 +8,7 @@ import * as TypeAliasesLib from "./CoreTypeScript/TypeAliasesLogic";
 import * as FunctionTypeLib from "./CoreTypeScript/FunctionTypesLogic";
 import * as NeverTypeLib from "./CoreTypeScript/NeverTypeLogic";
 import * as ComplexTypeLib from "./OtherSpecialTypeScript/ComplexTypeLogic";
+import * as IndexPropertyLib from "./OtherSpecialTypeScript/IndexPropertyLogic"
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -104,4 +105,7 @@ ComplexTypeLib.printNetworkReport();
 // Way 2 Using 'as' keyword with type name
 let inputHTMLElement1 = document.getElementById("input-box1")! as HTMLInputElement;
 inputHTMLElement1.value = "Hello My Name is Naveen !! :)";
+
+/** Index Property Demo */
+console.log("Index Property Demo : ", IndexPropertyLib.indexPropertyType);
 
