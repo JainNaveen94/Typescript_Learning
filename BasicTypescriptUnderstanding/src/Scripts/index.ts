@@ -3,10 +3,11 @@ import {Products, Prod, Product} from "./CoreTypeScript/ObjectTypeLogic";
 import * as ArrayLib from "./CoreTypeScript/ArrayTypeLogic";
 import * as TupleLib from "./CoreTypeScript/TupleTypeLogic";
 import * as EnumLib from "./CoreTypeScript/EnumTypeLogic";
-import * as SpecialLib from "./CoreTypeScript/SpecialTypeLogic";
+import * as SpecialLib from "./OtherSpecialTypeScript/SpecialTypeLogic";
 import * as TypeAliasesLib from "./CoreTypeScript/TypeAliasesLogic";
 import * as FunctionTypeLib from "./CoreTypeScript/FunctionTypesLogic";
 import * as NeverTypeLib from "./CoreTypeScript/NeverTypeLogic";
+import * as ComplexTypeLib from "./OtherSpecialTypeScript/ComplexTypeLogic";
 
 /** Basic Type Code Compilation */
 // When Pass Parameter Both as Number
@@ -73,3 +74,13 @@ NeverTypeLib.generateError("Internal Server Error !!", 500);
 NeverTypeLib.keepProcessing(); // Comment due to infinite loop
 console.log("TS Code Void return Type Check : ", NeverTypeLib.speech);
 
+/** Complex Type Code Compilation */
+console.log(" (#-#) ---- Intersection Type Demo  ---- (#-#)");
+let artistWork = {success: false, error: { message: "500 Internal Server Error" }, artists: [{ name: "Naveen" }, {name: "Shub"}]};
+ComplexTypeLib.handleArtistsResponse(artistWork);
+let artWork = {success: true, error: { message: "" }, artworks: [{ title: "Painting" }, {title: "dancing"}]};
+ComplexTypeLib.handleArtworksResponse(artWork);
+console.log(" (#-#) ---- Type Guard ---- (#-#)");
+console.log("Type Guard Core Type Example : ",ComplexTypeLib.addition(20,30));
+ComplexTypeLib.printEmployeeInformation();
+ComplexTypeLib.printNetworkReport();
