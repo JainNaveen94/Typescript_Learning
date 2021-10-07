@@ -84,3 +84,24 @@ console.log(" (#-#) ---- Type Guard ---- (#-#)");
 console.log("Type Guard Core Type Example : ",ComplexTypeLib.addition(20,30));
 ComplexTypeLib.printEmployeeInformation();
 ComplexTypeLib.printNetworkReport();
+
+/** Type-Casting in Typescript */
+/** 
+ * Here Below Error is occured on inputHTMLElement1 as because of Null Possibility. 
+ * So to Overcome this we append `!` symbol to told comiler it is never be a null
+ */
+//  let inputHTMLElement1 = document.getElementById("input-box1");
+//  inputHTMLElement1.value = "Hello My Name is Naveen !! :)";
+
+/** 
+ * Here Below Null Possibility error is correct but still Error is Exist due to TS Compiler don't understand the DOM Object
+ * So to make it understand by TSC, we have two ways of Expicit Type Conversion which are explained below :
+*/
+// Way 1 using JSX Type Conversion
+// let inputHTMLElement1 = <HTMLInputElement>  document.getElementById("input-box1")!;
+// inputHTMLElement1.value = "Hello My Name is Naveen !! :)";
+
+// Way 2 Using 'as' keyword with type name
+let inputHTMLElement1 = document.getElementById("input-box1")! as HTMLInputElement;
+inputHTMLElement1.value = "Hello My Name is Naveen !! :)";
+
