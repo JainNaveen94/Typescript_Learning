@@ -1,0 +1,209 @@
+/** Here we will Describe the Generics in Typescript */
+
+/** (@-@) ---- Generics In Typescript ---- (@-@) */
+
+1. What are Generics :
+-------------------------
+    - Generics offer a way to create reusable components. 
+    - Generics provide a way to make components work with any data type and not restrict to one data type. 
+      So, components can be called or used with a variety of data types.
+    - Generics uses the type variable <T>, a special kind of variable that denotes types. 
+    - The type variable remembers the type that the user provides and works with that particular type only. 
+      This is called preserving the type information.
+    - We can defined the multiple Type in Genreric Syntax, i.e., `<type1, type2, ....>`
+    - Generic are of Following Types :
+        A. Generic Function
+        B. Generic Classes
+        C. Generic Interfaces
+
+    A. Generic Functions :
+    >--------------------------<
+        - When Generic Behaviour is used with the Function Defination then that concept is called generic Function.
+
+        For Example ;
+        ---------------
+        // Generic Function Defination
+        function getArray<T>(items : T[] ) : T[] {
+            return new Array<T>().concat(items);
+        }
+        // Generic Function Creation
+        let myNumArr = getArray<number>([100, 200, 300]);
+        let myStrArr = getArray<string>(["Hello", "World"]);
+        // Perfrom Operations on Generic Function
+        myNumArr.push(400); // OK
+        myStrArr.push("Hello TypeScript"); // OK
+        // Perform Unwanted Operation on Generic Function
+        myNumArr.push("Hi"); // Compiler Error
+        myStrArr.push(500); // Compiler Error
+        
+    B. Generic Interfaces :
+    >--------------------------<
+        - When Generic Behaviour is Used to Define the Interfaces then that interface is called the Generic Interface.
+        
+        For Example ;
+        ---------------
+        // Generic Interface Defination
+        interface KeyValuePair<T, U> {
+            key: T;
+            value: U;
+        }
+        // Define Variable of Type KeyValuePair Generic Interface
+        let numKeyValuePair: KeyValuePair<number, number> = {key: 1, value= 1};
+        let stringKeyValuePair: KeyValuePair<string, string> = {key: "temp", value: "temper"};
+        let numStringKeyValuePair: KeyValuePair<number, string> = {key: 101, value: "Naveen"};
+        --------------------------------------------------------------------------------------------------------------
+        // Another Interface Example : Generic Interface as Function Type
+        interface TempFunctionInterface<T, U> {
+            (key: T, value: U): void;       // Genreric Signature Method
+        }
+        // Function which is very much similar as that of TempFunctionInterface
+        function processKeyValuePair<T, U>(key: T, value: U) : void {
+            console.log(`Process Key Value Pair where Key : ${key} & value : ${value}`);
+        }
+        // Let Define the variable as Functional Interface type
+        let keyValueProcessing: TempFunctionInterface<number, number> = processKeyValuePair;
+        keyValueProcessing(1, 20);
+        let keyValueProcessing2: TempFunctionInterface<number, string> = processKeyValuePair;
+        keyValueProcessing2(1, "Naveen");
+
+    C. Generic Classes :
+    >--------------------------<
+        - When Generic Behaviour is Used to Define the Classes then that interface is called the Generic Class.
+        - The generic class can also implement a generic interface.
+
+        For Example ;
+        ---------------
+        // Generic Interface Defination
+        interface IKeyValuePair<T, U> {
+            display(key: T, value: U): void ;
+        }
+        // Generic Class Defination
+        class KeyValuePair<T, U> implements IKeyValuePair<T, U>{
+            private key: T;
+            private value: U;
+
+            constructor(key: T, value: U){
+                this.key = key;
+                this.value = value;
+            }
+
+            get getKey() {
+                return this.key;
+            }
+
+            get getValue() {
+                return this.value;
+            }
+
+            display(key: T, value: U) : void {
+                console.log(`The Processing is Done for Key : ${key} & value: ${value}`)
+            }
+        }
+        // Using Class to Define Object
+        let processKeyValuePair =  new KeyValuePair<number, string>();
+        processKeyValuePair.setKeyValue(101, "Naveen");
+        processKeyValuePair.display(processKeyValuePair.getKey, processKeyValuePair.getValue);
+
+
+2. Generic Constraint :
+----------------------------
+    - Here Above we can see the Different Different types of Places where we used the Generic.
+    - Generic type allows any data type. However, we can restrict it to certain types using constraints.
+      That Concept is called Generic Constraint.
+
+      Why we need Generic Constraints :
+    >--------------------------------------<
+    1. Suppose you try to call a in-build method which is specific to any type and not available for all the Types.
+       Now when we use such type of methods in Generic Definations then it will throw a Compiler Error.
+       So to Resolve this we need to Restricted Generic Defination to be specific to that type.
+
+       Lets Understand this Situation using below Example :
+       >>-------------------------------------------------------<<
+        // Generic Function having Type Constraint Issue
+       function getAndPrint<T>(element: T): [T, string] {
+           let description = "No Data Exist in the Bucket";
+           if(element.length === 1) {                       // It will throw Compiler error because we are not assure about length property of element
+               description = "1 Data Exist In the Bucket";
+           } else if(element.length >= 2) {                 // It will throw Compiler error because we are not assure about length property of element
+               description = `${element.length} Data is Exist In the Bucket`;
+           }
+           return [element, description];
+       }
+        // Using the Define Generic Function
+       console.log("Generic Constraint : ", getAndPrint(["Hello Hero !", "Don't Become Zero !"]));
+
+       /** (@-@) --- Above Problem Solution --- (@-@) */
+       - So to Overcome this we have a workaround here using Generic Constraint
+       - We can define the Custom Type having length as a Property and extend it into that Generic Variable
+       */
+        // Custome Type Defination
+       interface Lengthy {
+           length: number;
+       }
+       // Generic Function having Type Constraint Implementation
+       function getAndPrint<T extends Lengthy>(element: T): [T, string] {
+           let description = "No Data Exist in the Bucket";
+           if(element.length === 1) {                       // It will throw Compiler error because we are not assure about length property of element
+               description = "1 Data Exist In the Bucket";
+           } else if(element.length >= 2) {                 // It will throw Compiler error because we are not assure about length property of element
+               description = `${element.length} Data is Exist In the Bucket`;
+           }
+           return [element, description];
+       }
+       // Using the Define Generic Function
+       console.log("Generic Constraint : ", getAndPrint(["Hello Hero !", "Don't Become Zero !"]));
+
+    2. The Same Above Situation come with the Object Type where we try to perfrom the Operation in Generic Defination,
+       which is only possible with objects not with other type but when we perform it on other time then it will not 
+       give error but opertion is not performed.
+
+       Lets Understand this Situation using below Example :
+       >>-------------------------------------------------------<<
+        // Generic Function Type Defination
+       function merge<T, U>(objA: T, objB: U) {
+           return Object.assign(objA, objB); 
+       }
+       // Using the Define Generic Function
+       merge({name: "Naveen"}, {age: 30}); // Result : {name: "Naveen", age: 30};
+       merge({name: "Naveen"}, 30); // it will not through here but nothing is happened to objA : {name: "Naveen"}
+
+       /** (@-@) --- Above Problem Solution --- (@-@) */
+       // Generic Function Type Defination
+       function merge<T extends object, U extends object>(objA: T, objB: U) {
+           return Object.assign(objA, objB); 
+       }
+       // Using the Define Generic Function
+       merge({name: "Naveen"}, {age: 30}); // Result : {name: "Naveen", age: 30};
+       merge({name: "Naveen"}, 30); // it will through Comiler error and will notify user about right thing to do.
+
+    3. One more Situation here is that we try to access or perform other operation on the one type of object by assuming it to be a part of other type
+       but it is not like that.
+
+       Lets Understand this Situation using below Example :
+       >>-------------------------------------------------------<<
+       // Generic Function Declaration
+       function extractAndConvert<T, U>(Obj: T, key: U) {
+           return obj[key];                 // it will thrown error by compiler as it is not sure that key is a part of type obj.
+       }
+        // using the Defined Generic Function
+        extractAndConvert({}, 'name');      // it will thrown error by compiler as name is not a part of Object.
+
+       /** (@-@) --- Above Problem Solution --- (@-@) */
+       // Generic Function Type Defination
+        function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+           return obj[key];                 
+       }
+       // using the Defined Generic Function
+        extractAndConvert({name: "Naveen"}, 'name');
+
+
+For More information :
+-----------------------------
+These links might also be interesting:
+More on Generics: https://www.typescriptlang.org/docs/handbook/generics.html
+
+
+
+
+    
+
